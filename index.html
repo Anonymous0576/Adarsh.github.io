@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Adarsh Mishra // Cybersecurity</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#020609;
+    color:#dfffff;
+    font-family:"Courier New",monospace;
+    overflow-x:hidden;
+}
+
+/* TECH GRID */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+
+    background-image:
+    linear-gradient(#00ffff0b 1px,transparent 1px),
+    linear-gradient(90deg,#00ffff0b 1px,transparent 1px);
+
+    background-size:40px 40px;
+
+    animation:grid 8s linear infinite;
+}
+
+@keyframes grid{
+    from{background-position:0 0;}
+    to{background-position:40px 40px;}
+}
+
+/* SCANLINES */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:999;
+
+    background:linear-gradient(
+        transparent 50%,
+        #00ffff08 50%
+    );
+
+    background-size:100% 4px;
+}
+
+/* PARTICLES */
+.particles{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    pointer-events:none;
+}
+
+.particles span{
+    position:absolute;
+    width:3px;
+    height:3px;
+
+    background:#00ffff;
+    border-radius:50%;
+
+    box-shadow:0 0 12px #00ffff;
+
+    animation:particle 8s linear infinite;
+}
+
+.particles span:nth-child(1){left:10%;top:90%;}
+.particles span:nth-child(2){left:25%;top:70%;animation-delay:2s;}
+.particles span:nth-child(3){left:45%;top:85%;animation-delay:4s;}
+.particles span:nth-child(4){left:65%;top:60%;animation-delay:1s;}
+.particles span:nth-child(5){left:85%;top:80%;animation-delay:3s;}
+.particles span:nth-child(6){left:50%;top:95%;animation-delay:5s;}
+
+@keyframes particle{
+    0%{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-500px);
+        opacity:0;
+    }
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+
+    padding:15px 7%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:#02090ddd;
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid #00ffff55;
+
+    z-index:100;
+}
+
+.logo{
+    color:#00ffff;
+    font-size:19px;
+    font-weight:bold;
+
+    text-shadow:
+    0 0 8px #00ffff,
+    0 0 20px #00ffff;
+}
+
+nav a{
+    color:#8eefff;
+    text-decoration:none;
+    margin-left:18px;
+    font-size:12px;
+}
+
+nav a:hover{
+    color:white;
+    text-shadow:0 0 10px #00ffff;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:110px 6% 50px;
+}
+
+.heroBox{
+    width:100%;
+    max-width:1050px;
+
+    padding:45px 30px;
+
+    border:1px solid #00ffff88;
+
+    background:#001014aa;
+
+    box-shadow:
+    0 0 30px #00ffff15,
+    inset 0 0 50px #00ffff08;
+
+    position:relative;
+}
+
+/* CORNERS */
+.heroBox::before,
+.heroBox::after{
+    content:"";
+    position:absolute;
+
+    width:55px;
+    height:55px;
+}
+
+.heroBox::before{
+    top:-2px;
+    left:-2px;
+
+    border-top:3px solid #00ffff;
+    border-left:3px solid #00ffff;
+}
+
+.heroBox::after{
+    right:-2px;
+    bottom:-2px;
+
+    border-right:3px solid #00ffff;
+    border-bottom:3px solid #00ffff;
+}
+
+/* PROFILE LAYOUT */
+.profile{
+    display:flex;
+    align-items:center;
+    gap:45px;
+}
+
+.photo{
+    width:190px;
+    height:190px;
+
+    border:2px solid #00ffff;
+
+    padding:6px;
+
+    background:#00151a;
+
+    box-shadow:
+    0 0 15px #00ffff,
+    0 0 40px #00ffff44;
+
+    overflow:hidden;
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* STATUS */
+.status{
+    color:#00ff88;
+    margin-bottom:18px;
+
+    text-shadow:0 0 10px #00ff88;
+}
+
+.status::before{
+    content:"● ";
+}
+
+/* NAME */
+h1{
+    font-size:clamp(40px,8vw,75px);
+
+    color:white;
+
+    letter-spacing:4px;
+
+    text-shadow:
+    0 0 5px #00ffff,
+    0 0 20px #00ffff,
+    0 0 50px #00ffff;
+
+    animation:glitch 3s infinite;
+}
+
+@keyframes glitch{
+    0%,90%,100%{transform:none;}
+    92%{transform:skew(2deg);}
+    94%{transform:translateX(-3px);}
+    96%{transform:translateX(3px);}
+}
+
+.subtitle{
+    color:#00ffff;
+    margin:12px 0 25px;
+}
+
+/* BUTTON */
+.techBtn{
+    display:inline-block;
+
+    padding:13px 22px;
+
+    border:1px solid #00ffff;
+
+    color:#00ffff;
+
+    text-decoration:none;
+
+    background:#00151a;
+
+    transition:.3s;
+
+    margin-top:15px;
+}
+
+.techBtn:hover{
+    color:#001014;
+
+    background:#00ffff;
+
+    box-shadow:
+    0 0 15px #00ffff,
+    0 0 40px #00ffff;
+}
+
+/* SECTIONS */
+section{
+    padding:90px 7%;
+}
+
+.title{
+    color:#00ffff;
+    font-size:29px;
+    margin-bottom:35px;
+
+    text-shadow:0 0 12px #00ffff;
+}
+
+.title::before{
+    content:"// ";
+    color:#00ff88;
+}
+
+/* TERMINAL */
+.terminal{
+    max-width:900px;
+    margin:auto;
+
+    background:#01090d;
+
+    border:1px solid #00ffff55;
+
+    box-shadow:0 0 25px #00ffff12;
+}
+
+.terminalHead{
+    padding:11px 15px;
+
+    border-bottom:1px solid #00ffff33;
+
+    color:#00ff88;
+}
+
+.terminalBody{
+    padding:25px;
+
+    line-height:1.8;
+
+    color:#b9ffff;
+}
+
+.command{
+    color:#00ff88;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+}
+
+.card{
+    padding:25px;
+
+    border:1px solid #00ffff44;
+
+    background:#031014;
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+
+    border-color:#00ffff;
+
+    box-shadow:
+    0 0 20px #00ffff33;
+}
+
+.card h3{
+    color:#00ffff;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#8eb8bd;
+}
+
+/* TIMELINE */
+.timeline{
+    max-width:850px;
+    margin:auto;
+}
+
+.event{
+    border-left:2px solid #00ffff;
+
+    padding:20px 25px;
+
+    margin-bottom:20px;
+
+    background:#031014;
+
+    position:relative;
+}
+
+.event::before{
+    content:"";
+
+    position:absolute;
+
+    width:9px;
+    height:9px;
+
+    left:-5px;
+    top:25px;
+
+    border-radius:50%;
+
+    background:#00ffff;
+
+    box-shadow:0 0 15px #00ffff;
+}
+
+.event h3{
+    color:#00ffff;
+    margin-bottom:8px;
+}
+
+/* DREAM */
+.dream{
+    max-width:800px;
+    margin:auto;
+
+    text-align:center;
+
+    padding:40px 25px;
+
+    border:1px solid #00ffff66;
+
+    background:#021014;
+
+    box-shadow:
+    inset 0 0 30px #00ffff08;
+}
+
+.dream h3{
+    font-size:28px;
+
+    color:#00ff88;
+
+    text-shadow:0 0 12px #00ff88;
+
+    margin-bottom:15px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+
+    padding:30px;
+
+    border-top:1px solid #00ffff33;
+
+    color:#52777c;
+}
+
+footer span{
+    color:#00ffff;
+}
+
+/* MOBILE */
+@media(max-width:650px){
+
+    nav{
+        padding:13px 5%;
+    }
+
+    nav a{
+        display:none;
+    }
+
+    .heroBox{
+        padding:35px 20px;
+    }
+
+    .profile{
+        flex-direction:column;
+        text-align:center;
+        gap:25px;
+    }
+
+    .photo{
+        width:160px;
+        height:160px;
+    }
+
+    h1{
+        font-size:43px;
+        letter-spacing:2px;
+    }
+
+    section{
+        padding:70px 5%;
+    }
+
+    .title{
+        font-size:24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PARTICLES -->
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+
+<!-- NAVIGATION -->
+<nav>
+
+    <div class="logo">
+        ADARSH._
+    </div>
+
+    <div>
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#journey">JOURNEY</a>
+        <a href="#dream">DREAM</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+<div class="heroBox">
+
+    <div class="profile">
+
+        <!-- YOUR IMAGE -->
+        <div class="photo">
+
+            <!--
+            Put your image in the same folder
+            and rename it to:
+
+            adarsh.jpg
+            -->
+
+            <img src="adarsh.jpg" alt="Adarsh Mishra">
+
+        </div>
+
+
+        <div>
+
+            <div class="status">
+                SYSTEM ONLINE
+            </div>
+
+            <p>> INITIALIZING USER PROFILE...</p>
+
+            <h1>ADARSH</h1>
+
+            <div class="subtitle">
+                DIGITAL IDENTITY // CYBERSECURITY
+            </div>
+
+            <p style="color:#789da3;">
+                CLASS 07 // STUDENT // FUTURE CYBERSECURITY PROFESSIONAL
+            </p>
+
+            <a href="#about" class="techBtn">
+                [ ACCESS PROFILE ]
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+<h2 class="title">
+USER PROFILE
+</h2>
+
+<div class="terminal">
+
+    <div class="terminalHead">
+        ● TERMINAL // ADARSH_PROFILE
+    </div>
+
+    <div class="terminalBody">
+
+        <p>
+            <span class="command">adarsh@system:~$</span>
+            whoami
+        </p>
+
+        <br>
+
+        <p>
+            NAME:
+            <strong>Adarsh Mishra</strong>
+        </p>
+
+        <p>
+            CLASS:
+            <strong>7</strong>
+        </p>
+
+        <p>
+            PROFESSION:
+            <strong>Student</strong>
+        </p>
+
+        <p>
+            DREAM:
+            <strong>Cybersecurity</strong>
+        </p>
+
+        <br>
+
+        <p>
+            <span class="command">adarsh@system:~$</span>
+            status
+        </p>
+
+        <p style="color:#00ff88;">
+            [ ONLINE ] Learning • Exploring • Growing
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- JOURNEY -->
+<section id="journey">
+
+<h2 class="title">
+MY JOURNEY
+</h2>
+
+<div class="timeline">
+
+    <div class="event">
+
+        <h3>
+            01 // CLASS 5
+        </h3>
+
+        <p>
+            When I was in Class 5, I appeared for the
+            JNVST examination. I came very close to success,
+            missing the selection by only 2.50 marks.
+        </p>
+
+    </div>
+
+
+    <div class="event">
+
+        <h3>
+            02 // NEVER STOPPED
+        </h3>
+
+        <p>
+            Although I was not successful in JNVST,
+            I did not stop trying. The experience
+            motivated me to continue moving forward.
+        </p>
+
+    </div>
+
+
+    <div class="event">
+
+        <h3>
+            03 // CM SHRI
+        </h3>
+
+        <p>
+            After that, I appeared for the CM Shri
+            examination and successfully got selected.
+        </p>
+
+    </div>
+
+
+    <div class="event">
+
+        <h3>
+            04 // CURRENT STATUS
+        </h3>
+
+        <p>
+            Today I am a Class 7 student and continue
+            to learn, explore technology and work
+            towards my future dream.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- DREAM -->
+<section id="dream">
+
+<h2 class="title">
+FUTURE MISSION
+</h2>
+
+<div class="dream">
+
+    <h3>
+        CYBERSECURITY
+    </h3>
+
+    <p>
+        My dream is to build my future in
+        <strong>Cybersecurity</strong>.
+    </p>
+
+    <br>
+
+    <p>
+        I want to keep learning about computers,
+        technology and digital security and
+        develop the skills needed for my future.
+    </p>
+
+    <br>
+
+    <p style="color:#00ffff;">
+        [ MISSION STATUS: IN PROGRESS ]
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section>
+
+<h2 class="title">
+CONTACT NODE
+</h2>
+
+<div class="terminal">
+
+    <div class="terminalHead">
+        ● COMMUNICATION // CONTACT
+    </div>
+
+    <div class="terminalBody">
+
+        <p>
+            <span class="command">adarsh@system:~$</span>
+            cat contact.txt
+        </p>
+
+        <br>
+
+        <p>
+            EMAIL:
+            Adarsh223377@gmail.com
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        ADARSH MISHRA // DIGITAL PROFILE
+    </p>
+
+    <p>
+        SYSTEM STATUS:
+        <span>ONLINE</span>
+    </p>
+
+    <p style="margin-top:10px;">
+        © Copyright 2026
+    </p>
+
+</footer>
+
+</body>
+</html>
